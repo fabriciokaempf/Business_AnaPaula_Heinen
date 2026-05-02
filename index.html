@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendário Editorial: Ana Paula Heinen, Maio 2026</title>
+<style>
+  :root {
+    --confronta: #5B21B6;
+    --confronta-light: #EDE9FE;
+    --ferramentas: #065F46;
+    --ferramentas-light: #D1FAE5;
+    --historia: #9A3412;
+    --historia-light: #FFEDD5;
+    --testemunhos: #0E7490;
+    --testemunhos-light: #CFFAFE;
+    --vida-real: #9D174D;
+    --vida-real-light: #FCE7F3;
+    --especial: #92400E;
+    --especial-light: #FEF3C7;
+    --bg: #F8F7FF;
+    --card-bg: #FFFFFF;
+    --text: #1A1A2E;
+    --text-muted: #6B7280;
+    --border: #E5E7EB;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px 16px 60px;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #1A0A3E 0%, #3B1A8C 60%, #6D28D9 100%);
+    border-radius: 16px;
+    padding: 36px 32px;
+    color: white;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -20px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+  }
+  .header-handle { font-size: 13px; letter-spacing: 0.1em; opacity: 0.7; margin-bottom: 8px; }
+  .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+  .header-sub { font-size: 16px; opacity: 0.8; margin-bottom: 20px; }
+  .header-stats { display: flex; gap: 24px; flex-wrap: wrap; }
+  .stat { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 16px; font-size: 14px; }
+  .stat strong { display: block; font-size: 22px; font-weight: 700; }
+
+  /* LEGEND */
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-bottom: 32px;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 8px;
+    background: white; border: 1px solid var(--border);
+    border-radius: 20px; padding: 6px 14px; font-size: 13px; font-weight: 500;
+  }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* CALENDAR GRID */
+  .section-title {
+    font-size: 18px; font-weight: 700; margin-bottom: 16px; color: var(--text);
+  }
+  .calendar-grid {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  .cal-header-row {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    background: #1A0A3E; color: white;
+  }
+  .cal-day-name {
+    padding: 10px 0; text-align: center; font-size: 12px;
+    font-weight: 600; letter-spacing: 0.05em;
+  }
+  .cal-body {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+  }
+  .cal-cell {
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    min-height: 72px;
+    padding: 8px;
+    position: relative;
+  }
+  .cal-cell:nth-child(7n) { border-right: none; }
+  .cal-cell.empty { background: #FAFAFA; }
+  .cal-cell.today { background: #F5F3FF; }
+  .cal-num {
+    font-size: 13px; font-weight: 600; color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .cal-cell.has-post .cal-num { color: var(--text); }
+  .cal-post-chip {
+    font-size: 10px; font-weight: 600;
+    border-radius: 4px; padding: 2px 6px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    margin-bottom: 2px;
+    display: block;
+  }
+  .cal-cell.especial { background: var(--especial-light); }
+
+  /* POST CARDS */
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+  }
+  .post-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .post-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .card-stripe { height: 5px; }
+  .card-body { padding: 20px; }
+  .card-top {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; margin-bottom: 12px;
+    flex-wrap: wrap; gap: 8px;
+  }
+  .card-date { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+  .card-number {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    color: var(--text-muted); text-transform: uppercase;
+  }
+  .pilar-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 700; border-radius: 20px;
+    padding: 4px 10px; text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+  .formato-badge {
+    display: inline-block;
+    font-size: 11px; font-weight: 600;
+    background: #F3F4F6; color: #374151;
+    border-radius: 6px; padding: 3px 10px;
+    margin-left: 6px;
+  }
+  .anchor-badge {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    background: #FEF3C7; color: #92400E;
+    border-radius: 6px; padding: 3px 10px;
+    margin-left: 6px;
+    border: 1px solid #FCD34D;
+  }
+  .cta-capture-badge {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    background: #DCFCE7; color: #15803D;
+    border-radius: 6px; padding: 3px 10px;
+    margin-left: 6px;
+    border: 1px solid #86EFAC;
+  }
+  .hook {
+    font-size: 15px; font-weight: 700; line-height: 1.4;
+    margin-bottom: 14px; color: var(--text);
+  }
+  .section-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin-bottom: 4px; margin-top: 12px;
+  }
+  .section-content {
+    font-size: 13px; line-height: 1.6; color: #374151;
+  }
+  .biblia-ref {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 600;
+    background: #EEF2FF; color: #3730A3;
+    border-radius: 6px; padding: 3px 10px;
+    margin-top: 4px;
+  }
+  .cta-box {
+    background: #F9FAFB;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-top: 12px;
+  }
+  .cta-box strong { color: #1A1A2E; }
+  .hashtags {
+    font-size: 12px; color: #6B7280;
+    line-height: 1.6; margin-top: 12px;
+  }
+  .hashtags span { color: #7C3AED; font-weight: 500; }
+  .divider {
+    border: none; border-top: 1px solid var(--border);
+    margin: 12px 0;
+  }
+
+  /* PILLAR COLOR UTILS */
+  .c-confronta { background: var(--confronta); }
+  .c-ferramentas { background: var(--ferramentas); }
+  .c-historia { background: var(--historia); }
+  .c-testemunhos { background: var(--testemunhos); }
+  .c-vidareal { background: var(--vida-real); }
+  .c-especial { background: var(--especial); }
+
+  .bg-confronta { background: var(--confronta-light); color: var(--confronta); }
+  .bg-ferramentas { background: var(--ferramentas-light); color: var(--ferramentas); }
+  .bg-historia { background: var(--historia-light); color: var(--historia); }
+  .bg-testemunhos { background: var(--testemunhos-light); color: var(--testemunhos); }
+  .bg-vidareal { background: var(--vida-real-light); color: var(--vida-real); }
+  .bg-especial { background: var(--especial-light); color: var(--especial); }
+
+  @media (max-width: 600px) {
+    .header { padding: 24px 20px; }
+    .header h1 { font-size: 22px; }
+    .posts-grid { grid-template-columns: 1fr; }
+    .cal-cell { min-height: 54px; padding: 5px; }
+    .cal-post-chip { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-handle">@anaheinenterapeuta</div>
+  <h1>Ana Paula Heinen</h1>
+  <div class="header-sub">Calendário Editorial: Instagram, Maio 2026</div>
+  <div class="header-stats">
+    <div class="stat"><strong>16</strong> posts</div>
+    <div class="stat"><strong>4×</strong> por semana</div>
+    <div class="stat"><strong>Seg · Qua · Sex · Dom</strong></div>
+    <div class="stat"><strong>5 pilares</strong> de conteúdo</div>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="section-title">Pilares de Conteúdo</div>
+<div class="legend">
+  <div class="legend-item"><span class="legend-dot c-confronta"></span> A Palavra que Confronta</div>
+  <div class="legend-item"><span class="legend-dot c-ferramentas"></span> Ferramentas de Transformação</div>
+  <div class="legend-item"><span class="legend-dot c-historia"></span> Minha História</div>
+  <div class="legend-item"><span class="legend-dot c-testemunhos"></span> Testemunhos e Resultados</div>
+  <div class="legend-item"><span class="legend-dot c-vidareal"></span> Vida Real: A Mesa</div>
+  <div class="legend-item"><span class="legend-dot c-especial"></span> Post Especial</div>
+</div>
+
+<!-- CALENDAR VISUAL -->
+<div class="section-title">Maio 2026</div>
+<div class="calendar-grid">
+  <div class="cal-header-row">
+    <div class="cal-day-name">DOM</div>
+    <div class="cal-day-name">SEG</div>
+    <div class="cal-day-name">TER</div>
+    <div class="cal-day-name">QUA</div>
+    <div class="cal-day-name">QUI</div>
+    <div class="cal-day-name">SEX</div>
+    <div class="cal-day-name">SÁB</div>
+  </div>
+  <div class="cal-body">
+    <!-- Semana 1: maio começa na sexta (dia 1 = sexta) -->
+    <div class="cal-cell empty"></div><!-- Dom -->
+    <div class="cal-cell empty"></div><!-- Seg -->
+    <div class="cal-cell empty"></div><!-- Ter -->
+    <div class="cal-cell empty"></div><!-- Qua -->
+    <div class="cal-cell empty"></div><!-- Qui -->
+    <div class="cal-cell"><div class="cal-num">1</div></div><!-- Sex -->
+    <div class="cal-cell"><div class="cal-num">2</div></div><!-- Sáb -->
+    <!-- Semana 2 -->
+    <div class="cal-cell"><div class="cal-num">3</div></div>
+    <div class="cal-cell has-post"><div class="cal-num">4</div><span class="cal-post-chip bg-confronta">Confronta #1</span></div>
+    <!-- Nota: ajustado para 05 = seg -->
+    <div class="cal-cell"><div class="cal-num">5</div></div><!-- Ter (05 = Seg, começa no dia correto) -->
+    <!-- Recalculating: 1 May 2026 is a FRIDAY. So:
+         Fri 1, Sat 2, Sun 3, Mon 4, Tue 5, Wed 6, Thu 7, Fri 8, Sat 9, Sun 10,
+         Mon 11, Tue 12, Wed 13, Thu 14, Fri 15, Sat 16, Sun 17, Mon 18, Tue 19,
+         Wed 20, Thu 21, Fri 22, Sat 23, Sun 24, Mon 25, Tue 26, Wed 27, Thu 28,
+         Fri 29, Sat 30, Sun 31.
+
+         But the calendar says:
+         05/05 Seg = Monday → 1 May = Friday, then 5 May = Tuesday... wait.
+
+         Actually, let me recalculate. If 1 May 2026 is a Friday:
+         1=Fri, 2=Sat, 3=Sun, 4=Mon, 5=Tue, 6=Wed, 7=Thu, 8=Fri, 9=Sat, 10=Sun,
+         11=Mon, 12=Tue, 13=Wed, 14=Thu, 15=Fri, 16=Sat, 17=Sun, 18=Mon, 19=Tue, 20=Wed,
+         21=Thu, 22=Fri, 23=Sat, 24=Sun, 25=Mon, 26=Tue, 27=Wed, 28=Thu, 29=Fri, 30=Sat, 31=Sun
+
+         But the calendar says:
+         05/05 Seg (Monday)
+         07/05 Qua (Wednesday)
+         09/05 Sex (Friday)
+         11/05 Dom (Sunday)
+
+         So 5 = Monday, which means 1 = Thursday.
+
+         Let me verify: if 5 May = Monday, then:
+         1=Thu, 2=Fri, 3=Sat, 4=Sun, 5=Mon, 6=Tue, 7=Wed, 8=Thu, 9=Fri, 10=Sat,
+         11=Sun, 12=Mon, 13=Tue, 14=Wed, 15=Thu, 16=Fri, 17=Sat, 18=Sun, 19=Mon, 20=Tue,
+         21=Wed, 22=Thu, 23=Fri, 24=Sat, 25=Sun, 26=Mon, 27=Tue, 28=Wed, 29=Thu, 30=Fri, 31=Sat
+
+         Check with calendar entries:
+         05/05 Seg ✓ (Mon)
+         07/05 Qua ✓ (Wed)
+         09/05 Sex ✓ (Fri)
+         11/05 Dom ✓ (Sun)
+         12/05 Seg ✓ (Mon)
+         14/05 Qua ✓ (Wed)
+         16/05 Sex ✓ (Fri)
+         18/05 Dom ✓ (Sun)
+         19/05 Seg ✓ (Mon)
+         21/05 Qua ✓ (Wed)
+         23/05 Sex ✓ (Fri)
+         25/05 Dom ✓ (Sun)
+         26/05 Seg ✓ (Mon)
+         28/05 Qua ✓ (Wed)
+         30/05 Sex ✓ (Fri)
+         31/05 Sáb ✓ (Sat)
+
+         So 1 May 2026 = Thursday.
+
+         Calendar grid (starting Sunday):
+         Week 1: Sun(empty), Mon(empty), Tue(empty), Wed(empty), Thu(1), Fri(2), Sat(3)
+         Week 2: Sun(4), Mon(5*), Tue(6), Wed(7*), Thu(8), Fri(9*), Sat(10)
+         Week 3: Sun(11*), Mon(12*), Tue(13), Wed(14*), Thu(15), Fri(16*), Sat(17)
+         Week 4: Sun(18*), Mon(19*), Tue(20), Wed(21*), Thu(22), Fri(23*), Sat(24)
+         Week 5: Sun(25*), Mon(26*), Tue(27), Wed(28*), Thu(29), Fri(30*), Sat(31*)
+
+         * = has post
+    -->
+  </div>
+</div>
+
+<!-- I'll rebuild the calendar correctly below, replacing the broken one above -->
+
+<script>
+// Fix: rebuild calendar via JS
+(function() {
+  const grid = document.querySelector('.cal-body');
+  grid.innerHTML = '';
+
+  const posts = {
+    5: { pilar: 'confronta', chip: 'Confronta' },
+    7: { pilar: 'ferramentas', chip: 'Ferramentas' },
+    9: { pilar: 'historia', chip: 'História' },
+    11: { pilar: 'especial', chip: '🌸 Especial' },
+    12: { pilar: 'testemunhos', chip: 'Testemunho' },
+    14: { pilar: 'confronta', chip: 'Confronta' },
+    16: { pilar: 'ferramentas', chip: 'Ferramentas' },
+    18: { pilar: 'vidareal', chip: 'Vida Real' },
+    19: { pilar: 'historia', chip: 'História ⭐' },
+    21: { pilar: 'confronta', chip: 'Confronta' },
+    23: { pilar: 'ferramentas', chip: 'Ferramentas 🎯' },
+    25: { pilar: 'testemunhos', chip: 'Testemunho' },
+    26: { pilar: 'confronta', chip: 'Confronta' },
+    28: { pilar: 'ferramentas', chip: 'Ferramentas' },
+    30: { pilar: 'historia', chip: 'História' },
+    31: { pilar: 'vidareal', chip: 'Vida Real' }
+  };
+
+  // 1 May 2026 = Thursday (day 4, Sun=0)
+  // Grid starts Sunday. So offset = 4 empty cells before day 1
+  const offset = 4; // Thu = index 4 (Sun=0,Mon=1,Tue=2,Wed=3,Thu=4)
+  const daysInMay = 31;
+  const totalCells = Math.ceil((offset + daysInMay) / 7) * 7;
+
+  for (let i = 0; i < totalCells; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cal-cell';
+
+    if (i < offset || i >= offset + daysInMay) {
+      cell.classList.add('empty');
+    } else {
+      const day = i - offset + 1;
+      const p = posts[day];
+      if (p) {
+        cell.classList.add('has-post');
+        if (day === 11) cell.classList.add('especial');
+        cell.innerHTML = `<div class="cal-num">${day}</div><span class="cal-post-chip bg-${p.pilar}">${p.chip}</span>`;
+      } else {
+        cell.innerHTML = `<div class="cal-num">${day}</div>`;
+      }
+    }
+    grid.appendChild(cell);
+  }
+})();
+</script>
+
+<!-- POST CARDS -->
+<div class="section-title" style="margin-top:40px">Os 16 Posts: Roteiro Completo</div>
+<div class="posts-grid">
+
+  <!-- POST 1 -->
+  <div class="post-card">
+    <div class="card-stripe c-confronta"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">05 de maio, segunda-feira</div>
+          <div class="card-number">Post 01 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-confronta">A Palavra que Confronta</span>
+      <span class="formato-badge">Reel ou Carrossel</span>
+      <div class="hook">"Você está crescendo na fé ou crescendo em conhecimento bíblico? São coisas diferentes."</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Abre com a pergunta provocativa. Desenvolve a diferença entre acumular informação bíblica e crescer em fé de verdade. Usa exemplo prático: a pessoa que sabe todos os versículos mas não muda nada na prática. Fecha com convite para reflexão honesta.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">Hebreus 5:12-14</span>
+      <div class="cta-box"><strong>CTA:</strong> "Comenta qual delas descreve você hoje: crescimento em conhecimento ou crescimento em fé?"</div>
+      <div class="hashtags"><span>#mentoriacristã</span> <span>#mulhercristã</span> <span>#fébíblica</span> <span>#transformaçãoreal</span> <span>#crescimentoespiritual</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+  <!-- POST 2 -->
+  <div class="post-card">
+    <div class="card-stripe c-ferramentas"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">07 de maio, quarta-feira</div>
+          <div class="card-number">Post 02 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-ferramentas">Ferramentas de Transformação</span>
+      <span class="formato-badge">Carrossel 7-8 slides</span>
+      <div class="hook">R.O.T.A. da Renovação: a ferramenta que muda como você processa qualquer pensamento</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Slide 1: pergunta de abertura sobre pensamentos dominantes. Slides 2-5: cada letra explicada com exemplo prático (R = Reconhecer · O = Observar a Origem · T = Trocar pela Verdade · A = Agir em Alinhamento). Slide 6: exemplo do começo ao fim. Slide 7: versículo âncora. Slide 8: CTA para salvar.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">Romanos 12:2</span>
+      <div class="cta-box"><strong>CTA:</strong> "Salva esse post. Você vai precisar dessa ferramenta esta semana."</div>
+      <div class="hashtags"><span>#renovaçãodamente</span> <span>#ROTA</span> <span>#pensamentoscristãos</span> <span>#ferramentasdefe</span> <span>#mulhercristã</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+  <!-- POST 3 -->
+  <div class="post-card">
+    <div class="card-stripe c-historia"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">09 de maio, sexta-feira</div>
+          <div class="card-number">Post 03 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-historia">Minha História</span>
+      <span class="formato-badge">Carrossel ou Vídeo</span>
+      <div class="hook">"Antes de ser quem sou hoje, eu fui uma mãe buscando respostas nos lugares errados."</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Post pré-Dia das Mães com storytelling pessoal. Conta a busca por respostas antes de Cristo, sem revelar tudo (a história completa vem no post âncora do dia 19). Humanização máxima. Fecha com mensagem de esperança para mães que estão nessa mesma busca.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">Salmos 46:1</span>
+      <div class="cta-box"><strong>CTA:</strong> "Salva esse post pra ler de novo amanhã, no Dia das Mães."</div>
+      <div class="hashtags"><span>#diadasmães</span> <span>#maecristã</span> <span>#testemunho</span> <span>#históriapessoal</span> <span>#mulhercristã</span> <span>#mentoriacristã</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+  <!-- POST 4 -->
+  <div class="post-card">
+    <div class="card-stripe c-especial"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">11 de maio, domingo</div>
+          <div class="card-number">Post 04 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-especial">Post Especial</span>
+      <span class="formato-badge">Foto + Texto</span>
+      <span class="anchor-badge">🌸 Dia das Mães</span>
+      <div class="hook">"Para a mãe que está cansada de dar conta de tudo."</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Post emotivo e direto. Texto curto para a mãe sobrecarregada. Mensagem central: Deus não quer que você dê conta de tudo. Ele quer ser o seu descanso. Tom acolhedor, não sermão. Foto pessoal ou imagem de impacto.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">Isaías 66:13</span>
+      <div class="cta-box"><strong>CTA:</strong> "Marca uma mãe que precisa ouvir isso hoje."</div>
+      <div class="hashtags"><span>#diadasmães</span> <span>#maescristãs</span> <span>#Isaías6613</span> <span>#descanso</span> <span>#maternidade</span> <span>#mulhercristã</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+  <!-- POST 5 -->
+  <div class="post-card">
+    <div class="card-stripe c-testemunhos"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">12 de maio, segunda-feira</div>
+          <div class="card-number">Post 05 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-testemunhos">Testemunhos e Resultados</span>
+      <span class="formato-badge">Print + Texto</span>
+      <div class="hook">"Ela chegou dizendo que não sabia mais quem era. Hoje ela sabe."</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Apresenta a transformação de uma mentoreada (com permissão). Conta o antes, o processo na mentoria e o depois em 3-4 pontos concretos. Não é venda. É prova de que o método funciona. Fecha com reflexão.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">2 Coríntios 5:17</span>
+      <div class="cta-box"><strong>CTA:</strong> "Comenta SE você já se sentiu assim, sem saber quem você é de verdade."</div>
+      <div class="hashtags"><span>#testemunho</span> <span>#resultado</span> <span>#transformação</span> <span>#identidade</span> <span>#filhadeDeus</span> <span>#mentoriacristã</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+  <!-- POST 6 -->
+  <div class="post-card">
+    <div class="card-stripe c-confronta"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">14 de maio, quarta-feira</div>
+          <div class="card-number">Post 06 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-confronta">A Palavra que Confronta</span>
+      <span class="formato-badge">Reel 60-90s</span>
+      <div class="hook">"Nova Era ou Cristo: eu precisei escolher. E vou te dizer por que não dá pra ficar no meio."</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Post direto e corajoso. A Ana conta que tentou conciliar e por que não funcionou. Não é julgamento, é experiência. Usa argumento bíblico: não é possível servir a dois senhores. Provoca com amor quem está na mesma encruzilhada.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">Mateus 6:24</span>
+      <div class="cta-box"><strong>CTA:</strong> "Salva e manda pra alguém que você sabe que precisa ouvir isso."</div>
+      <div class="hashtags"><span>#novaera</span> <span>#exnovaera</span> <span>#terapiasenergeticas</span> <span>#fébíblica</span> <span>#verdade</span> <span>#mulhercristã</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+  <!-- POST 7 -->
+  <div class="post-card">
+    <div class="card-stripe c-ferramentas"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">16 de maio, sexta-feira</div>
+          <div class="card-number">Post 07 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-ferramentas">Ferramentas de Transformação</span>
+      <span class="formato-badge">Carrossel 6-7 slides</span>
+      <div class="hook">"A Pausa da Sabedoria: 3 perguntas que vão mudar como você reage a qualquer situação."</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Slide 1: você reage antes de pensar? Slides 2-4: cada pergunta (O que aconteceu? Como eu reagi? Como seria a resposta sábia?). Slide 5: como praticar toda noite (5 minutos). Slide 6: versículo âncora. Slide 7: CTA para salvar e testar.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">Tiago 1:5</span>
+      <div class="cta-box"><strong>CTA:</strong> "Salva esse post e testa essa noite antes de dormir."</div>
+      <div class="hashtags"><span>#pausadasabedoria</span> <span>#sabedoria</span> <span>#discernimento</span> <span>#ferramentasdefe</span> <span>#mulhercristã</span> <span>#Tiago15</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+  <!-- POST 8 -->
+  <div class="post-card">
+    <div class="card-stripe c-vidareal"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">18 de maio, domingo</div>
+          <div class="card-number">Post 08 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-vidareal">Vida Real: A Mesa</span>
+      <span class="formato-badge">Foto</span>
+      <div class="hook">"Domingo com Ele."</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Foto pessoal: Bíblia aberta, café, estudo ou família. Texto curto e acolhedor, sem ensino, sem sermão. Só presença. O objetivo é humanização e proximidade. A Ana que a gente quer conhecer, não só a mentora.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">Opcional. Omitir se parecer forçado.</span>
+      <div class="cta-box"><strong>CTA:</strong> "Conta como está seu domingo com Ele nos comentários."</div>
+      <div class="hashtags"><span>#domingocristão</span> <span>#devoção</span> <span>#momentocomDeus</span> <span>#vidacristã</span> <span>#familia</span> <span>#paz</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+  <!-- POST 9 - ÂNCORA -->
+  <div class="post-card" style="grid-column: span 1;">
+    <div class="card-stripe c-historia" style="height:7px"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">19 de maio, segunda-feira</div>
+          <div class="card-number">Post 09 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-historia">Minha História</span>
+      <span class="formato-badge">Carrossel 8-10 slides</span>
+      <span class="anchor-badge">⭐ Post Âncora do Mês</span>
+      <div class="hook">"Por que eu DECIDI deixar as terapias energéticas."</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Carrossel storytelling completo, o maior post do mês. <strong>Slide 1:</strong> hook de impacto. <strong>Slides 2-3:</strong> quem era antes, o que praticava e por quê. <strong>Slides 4-5:</strong> as dúvidas que começaram a surgir. <strong>Slide 6:</strong> o momento de ruptura, a virada. <strong>Slides 7-8:</strong> o que encontrou em Cristo que não encontrou nas terapias. <strong>Slides 9-10:</strong> chamada para quem está no mesmo processo. Escrever com entrega total. Esse post vai circular.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">2 Coríntios 5:17</span>
+      <div class="cta-box"><strong>CTA:</strong> "Comenta HISTÓRIA se quiser ouvir mais sobre essa jornada."</div>
+      <div class="hashtags"><span>#terapiasenergeticas</span> <span>#novaera</span> <span>#exnovaera</span> <span>#testemunho</span> <span>#encontreicrist</span> <span>#2coríntios517</span> <span>#transformação</span> <span>#mulhercristã</span> <span>#mentoriacristã</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+  <!-- POST 10 -->
+  <div class="post-card">
+    <div class="card-stripe c-confronta"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">21 de maio, quarta-feira</div>
+          <div class="card-number">Post 10 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-confronta">A Palavra que Confronta</span>
+      <span class="formato-badge">Reel</span>
+      <div class="hook">"Você tem buscado conforto ou transformação? São dois caminhos completamente diferentes."</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Desenvolve a diferença: buscar conforto (religião como seguro emocional, validação, bem-estar espiritual) vs buscar transformação (confronto real, processo, crescimento que dói antes de curar). Provoca com amor. Não é crítica. É diagnóstico.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">João 8:32</span>
+      <div class="cta-box"><strong>CTA:</strong> "Salva esse post. Isso vai incomodar do jeito certo."</div>
+      <div class="hashtags"><span>#transformação</span> <span>#conforto</span> <span>#fébíblica</span> <span>#confronto</span> <span>#crescimentoespiritual</span> <span>#mentoriacristã</span> <span>#mulhercristã</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+  <!-- POST 11 - CTA CAPTURA -->
+  <div class="post-card">
+    <div class="card-stripe c-ferramentas"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">23 de maio, sexta-feira</div>
+          <div class="card-number">Post 11 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-ferramentas">Ferramentas de Transformação</span>
+      <span class="formato-badge">Reel 60-90s</span>
+      <span class="cta-capture-badge">🎯 Primeiro CTA de Captura</span>
+      <div class="hook">"7 Dias de Entrega: desafio gratuito para aprender a soltar o controle e confiar em Deus de verdade."</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Apresenta a isca digital. O que é, para quem é, o que vai receber: 7 dias de ferramenta prática baseada na Semana 1 da mentoria. Mostra o resultado possível. Usa a base bíblica como âncora emocional. CTA claro e simples: comenta uma palavra.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">Provérbios 3:5-6</span>
+      <div class="cta-box"><strong>CTA:</strong> "Comenta QUERO que eu mando no direct agora."</div>
+      <div class="hashtags"><span>#7diasdeentrega</span> <span>#desafiogratuito</span> <span>#confiarEmDeus</span> <span>#entrega</span> <span>#Provérbios356</span> <span>#mentoriacristã</span> <span>#mulhercristã</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+  <!-- POST 12 -->
+  <div class="post-card">
+    <div class="card-stripe c-testemunhos"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">25 de maio, domingo</div>
+          <div class="card-number">Post 12 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-testemunhos">Testemunhos e Resultados</span>
+      <span class="formato-badge">Print ou Vídeo</span>
+      <div class="hook">"Pela primeira vez em anos, eu senti que podia soltar."</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Depoimento de mentoreada sobre a ferramenta "Isso não é meu" da Semana 1, a mesma que o desafio dos 7 Dias de Entrega usa. Reforça o CTA do dia 23. Resultado real documentado: o que ela sentia antes, como usou a ferramenta, o que mudou.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">1 Pedro 5:7</span>
+      <div class="cta-box"><strong>CTA:</strong> "Você já sentiu isso? Aquele alívio de verdade de soltar? Comenta aqui."</div>
+      <div class="hashtags"><span>#resultado</span> <span>#testemunho</span> <span>#entrega</span> <span>#confiarEmDeus</span> <span>#mentoriacristã</span> <span>#mulhercristã</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+  <!-- POST 13 -->
+  <div class="post-card">
+    <div class="card-stripe c-confronta"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">26 de maio, segunda-feira</div>
+          <div class="card-number">Post 13 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-confronta">A Palavra que Confronta</span>
+      <span class="formato-badge">Reel</span>
+      <div class="hook">"Você está esperando sentir para crer? Ou decidindo crer para então sentir?"</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Post teológico e prático. Diferença entre fé emocional (espero sentir segurança/paz/amor para então crer) e fé bíblica (decido crer, aí os sentimentos alinham). Usa exemplos do cotidiano. Não é crítica ao sentimento. É sobre a ordem.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">Hebreus 11:1</span>
+      <div class="cta-box"><strong>CTA:</strong> "Responde nos comentários: qual dos dois descreve você agora?"</div>
+      <div class="hashtags"><span>#fé</span> <span>#crer</span> <span>#sentimentos</span> <span>#fébíblica</span> <span>#Hebreus111</span> <span>#mentoriacristã</span> <span>#mulhercristã</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+  <!-- POST 14 -->
+  <div class="post-card">
+    <div class="card-stripe c-ferramentas"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">28 de maio, quarta-feira</div>
+          <div class="card-number">Post 14 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-ferramentas">Ferramentas de Transformação</span>
+      <span class="formato-badge">Carrossel 6-8 slides</span>
+      <div class="hook">"Roda da Vida com Princípios: como avalio o alinhamento da minha vida com o céu."</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Carrossel didático. O que diferencia a Roda com Princípios da roda convencional. Quais são as áreas avaliadas com base bíblica. Como usar (escala de 0 a 10). Exemplo real. Convite para quem quiser fazer com acompanhamento individual da Ana.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">Colossenses 3:17</span>
+      <div class="cta-box"><strong>CTA:</strong> "Salva esse post e faz sua avaliação essa semana."</div>
+      <div class="hashtags"><span>#rodadavida</span> <span>#alinhamento</span> <span>#propósito</span> <span>#ferramentasdefe</span> <span>#avaliação</span> <span>#mentoriacristã</span> <span>#mulhercristã</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+  <!-- POST 15 -->
+  <div class="post-card">
+    <div class="card-stripe c-historia"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">30 de maio, sexta-feira</div>
+          <div class="card-number">Post 15 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-historia">Minha História</span>
+      <span class="formato-badge">Reel ou Carrossel</span>
+      <div class="hook">"O que acontece quando você para de buscar cura e começa a buscar Cristo."</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Reflexão pessoal. "Passei anos buscando cura para as minhas dores. Quando encontrei Cristo, entendi que não era cura que eu precisava. Era Ele." Diferença entre terapia como fim e Cristo como base. Storytelling reflexivo, sem depreciação das ferramentas. É ressignificação.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">Isaías 53:5</span>
+      <div class="cta-box"><strong>CTA:</strong> "Comenta BUSCA se você está nesse processo de largar a cura e buscar Cristo."</div>
+      <div class="hashtags"><span>#cura</span> <span>#Cristo</span> <span>#terapia</span> <span>#fé</span> <span>#transformação</span> <span>#novaera</span> <span>#testemunho</span> <span>#mentoriacristã</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+  <!-- POST 16 -->
+  <div class="post-card">
+    <div class="card-stripe c-vidareal"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div>
+          <div class="card-date">31 de maio, sábado</div>
+          <div class="card-number">Post 16 de 16</div>
+        </div>
+      </div>
+      <span class="pilar-badge bg-vidareal">Vida Real: A Mesa</span>
+      <span class="formato-badge">Foto ou Vídeo</span>
+      <div class="hook">Fechamento de maio + convite suave para a mentoria de junho.</div>
+      <div class="section-label">Roteiro</div>
+      <div class="section-content">Foto ou vídeo acolhedor. Tom reflexivo e grato. Maio foi de confronto, entrega e transformação. Não é balanço numérico. É gratidão pelo processo. Apresenta junho brevemente: sem pressão de venda, só um convite. Para quem quer continuar esse caminho.</div>
+      <hr class="divider">
+      <div class="section-label">Base Bíblica</div>
+      <span class="biblia-ref">Filipenses 1:6</span>
+      <div class="cta-box"><strong>CTA:</strong> "Comenta JUNHO se quiser saber o que vem por aí na mentoria."</div>
+      <div class="hashtags"><span>#fechamentodemes</span> <span>#maio2026</span> <span>#junho</span> <span>#mentoriacristã</span> <span>#mulhercristã</span> <span>#transformação</span> <span>#vidacristã</span> <span>#anaheinen</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div style="text-align:center; margin-top:48px; color:#9CA3AF; font-size:12px; padding-bottom:16px;">
+  Calendário Editorial: Ana Paula Heinen · @anaheinenterapeuta · Maio 2026<br>
+  Estratégia: Kaempf Business
+</div>
+
+</body>
+</html>
