@@ -360,27 +360,27 @@
   grid.innerHTML = '';
 
   const posts = {
-    5: { pilar: 'confronta', chip: 'Confronta' },
-    7: { pilar: 'ferramentas', chip: 'Ferramentas' },
-    9: { pilar: 'historia', chip: 'História' },
-    11: { pilar: 'especial', chip: '🌸 Especial' },
-    12: { pilar: 'testemunhos', chip: 'Testemunho' },
-    14: { pilar: 'confronta', chip: 'Confronta' },
-    16: { pilar: 'ferramentas', chip: 'Ferramentas' },
-    18: { pilar: 'vidareal', chip: 'Vida Real' },
-    19: { pilar: 'historia', chip: 'História ⭐' },
-    21: { pilar: 'confronta', chip: 'Confronta' },
-    23: { pilar: 'ferramentas', chip: 'Ferramentas 🎯' },
-    25: { pilar: 'testemunhos', chip: 'Testemunho' },
-    26: { pilar: 'confronta', chip: 'Confronta' },
-    28: { pilar: 'ferramentas', chip: 'Ferramentas' },
-    30: { pilar: 'historia', chip: 'História' },
+    4: { pilar: 'confronta', chip: 'Confronta' },
+    6: { pilar: 'ferramentas', chip: 'Ferramentas' },
+    8: { pilar: 'historia', chip: 'História' },
+    10: { pilar: 'especial', chip: '🌸 Especial' },
+    11: { pilar: 'testemunhos', chip: 'Testemunho' },
+    13: { pilar: 'confronta', chip: 'Confronta' },
+    15: { pilar: 'ferramentas', chip: 'Ferramentas' },
+    17: { pilar: 'vidareal', chip: 'Vida Real' },
+    18: { pilar: 'historia', chip: 'História ⭐' },
+    20: { pilar: 'confronta', chip: 'Confronta' },
+    22: { pilar: 'ferramentas', chip: 'Ferramentas 🎯' },
+    24: { pilar: 'testemunhos', chip: 'Testemunho' },
+    25: { pilar: 'confronta', chip: 'Confronta' },
+    27: { pilar: 'ferramentas', chip: 'Ferramentas' },
+    29: { pilar: 'historia', chip: 'História' },
     31: { pilar: 'vidareal', chip: 'Vida Real' }
   };
 
-  // 1 May 2026 = Thursday (day 4, Sun=0)
-  // Grid starts Sunday. So offset = 4 empty cells before day 1
-  const offset = 4; // Thu = index 4 (Sun=0,Mon=1,Tue=2,Wed=3,Thu=4)
+  // 1 May 2026 = Friday (day 5, Sun=0)
+  // Grid starts Sunday. So offset = 5 empty cells before day 1
+  const offset = 5; // Fri = index 5 (Sun=0,Mon=1,Tue=2,Wed=3,Thu=4,Fri=5)
   const daysInMay = 31;
   const totalCells = Math.ceil((offset + daysInMay) / 7) * 7;
 
@@ -395,7 +395,7 @@
       const p = posts[day];
       if (p) {
         cell.classList.add('has-post');
-        if (day === 11) cell.classList.add('especial');
+        if (day === 10) cell.classList.add('especial');
         cell.innerHTML = `<div class="cal-num">${day}</div><span class="cal-post-chip bg-${p.pilar}">${p.chip}</span>`;
       } else {
         cell.innerHTML = `<div class="cal-num">${day}</div>`;
@@ -416,7 +416,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">05 de maio, segunda-feira</div>
+          <div class="card-date">04 de maio, segunda-feira</div>
           <div class="card-number">Post 01 de 16</div>
         </div>
       </div>
@@ -439,7 +439,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">07 de maio, quarta-feira</div>
+          <div class="card-date">06 de maio, quarta-feira</div>
           <div class="card-number">Post 02 de 16</div>
         </div>
       </div>
@@ -462,7 +462,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">09 de maio, sexta-feira</div>
+          <div class="card-date">08 de maio, sexta-feira</div>
           <div class="card-number">Post 03 de 16</div>
         </div>
       </div>
@@ -474,7 +474,7 @@
       <hr class="divider">
       <div class="section-label">Base Bíblica</div>
       <span class="biblia-ref">Salmos 46:1</span>
-      <div class="cta-box"><strong>CTA:</strong> "Salva esse post pra ler de novo amanhã, no Dia das Mães."</div>
+      <div class="cta-box"><strong>CTA:</strong> "Salva esse post pra ler no Dia das Mães, domingo."</div>
       <div class="hashtags"><span>#diadasmães</span> <span>#maecristã</span> <span>#testemunho</span> <span>#históriapessoal</span> <span>#mulhercristã</span> <span>#mentoriacristã</span> <span>#anaheinen</span></div>
     </div>
   </div>
@@ -485,7 +485,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">11 de maio, domingo</div>
+          <div class="card-date">10 de maio, domingo</div>
           <div class="card-number">Post 04 de 16</div>
         </div>
       </div>
@@ -509,7 +509,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">12 de maio, segunda-feira</div>
+          <div class="card-date">11 de maio, segunda-feira</div>
           <div class="card-number">Post 05 de 16</div>
         </div>
       </div>
@@ -532,7 +532,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">14 de maio, quarta-feira</div>
+          <div class="card-date">13 de maio, quarta-feira</div>
           <div class="card-number">Post 06 de 16</div>
         </div>
       </div>
@@ -555,7 +555,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">16 de maio, sexta-feira</div>
+          <div class="card-date">15 de maio, sexta-feira</div>
           <div class="card-number">Post 07 de 16</div>
         </div>
       </div>
@@ -578,7 +578,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">18 de maio, domingo</div>
+          <div class="card-date">17 de maio, domingo</div>
           <div class="card-number">Post 08 de 16</div>
         </div>
       </div>
@@ -601,7 +601,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">19 de maio, segunda-feira</div>
+          <div class="card-date">18 de maio, segunda-feira</div>
           <div class="card-number">Post 09 de 16</div>
         </div>
       </div>
@@ -625,7 +625,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">21 de maio, quarta-feira</div>
+          <div class="card-date">20 de maio, quarta-feira</div>
           <div class="card-number">Post 10 de 16</div>
         </div>
       </div>
@@ -648,7 +648,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">23 de maio, sexta-feira</div>
+          <div class="card-date">22 de maio, sexta-feira</div>
           <div class="card-number">Post 11 de 16</div>
         </div>
       </div>
@@ -672,7 +672,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">25 de maio, domingo</div>
+          <div class="card-date">24 de maio, domingo</div>
           <div class="card-number">Post 12 de 16</div>
         </div>
       </div>
@@ -695,7 +695,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">26 de maio, segunda-feira</div>
+          <div class="card-date">25 de maio, segunda-feira</div>
           <div class="card-number">Post 13 de 16</div>
         </div>
       </div>
@@ -718,7 +718,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">28 de maio, quarta-feira</div>
+          <div class="card-date">27 de maio, quarta-feira</div>
           <div class="card-number">Post 14 de 16</div>
         </div>
       </div>
@@ -741,7 +741,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">30 de maio, sexta-feira</div>
+          <div class="card-date">29 de maio, sexta-feira</div>
           <div class="card-number">Post 15 de 16</div>
         </div>
       </div>
@@ -764,7 +764,7 @@
     <div class="card-body">
       <div class="card-top">
         <div>
-          <div class="card-date">31 de maio, sábado</div>
+          <div class="card-date">31 de maio, domingo</div>
           <div class="card-number">Post 16 de 16</div>
         </div>
       </div>
