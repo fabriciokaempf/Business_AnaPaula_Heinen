@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Posts — Ana Paula Heinen</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0F0A1E;
+      color: #F5E6C8;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      padding: 48px 20px 80px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #B8860B;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(20px, 4vw, 30px);
+      font-weight: 400;
+      color: #F5E6C8;
+      line-height: 1.3;
+      margin-bottom: 18px;
+    }
+
+    .gold-line {
+      width: 60px;
+      height: 1px;
+      background: #B8860B;
+      margin: 0 auto 18px;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      color: #7a6f5e;
+      letter-spacing: 0.04em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 32px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .card-date {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: #B8860B;
+      text-transform: uppercase;
+    }
+
+    .card-pilar {
+      font-size: 10px;
+      color: #4a4338;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: 0 8px 36px rgba(0,0,0,0.6);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: block;
+    }
+
+    /* Reels são 9:16 */
+    .reel img {
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+    }
+
+    /* Quadrado é 1:1 */
+    .square img {
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    .card img:hover {
+      transform: scale(1.012);
+      box-shadow: 0 14px 48px rgba(0,0,0,0.8);
+    }
+
+    .card-title {
+      font-size: 13px;
+      color: #C3B898;
+      line-height: 1.45;
+    }
+
+    .card-format {
+      font-size: 10px;
+      color: #4a4338;
+      margin-top: 2px;
+      letter-spacing: 0.08em;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 72px;
+      font-size: 11px;
+      color: #2e2820;
+      letter-spacing: 0.1em;
+    }
+
+    footer span { color: #B8860B; }
+
+    @media (max-width: 500px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <p class="label">Preview — Criativos Maio 2026</p>
+  <h1>@anaheinenterapeuta</h1>
+  <div class="gold-line"></div>
+  <p class="subtitle">Posts prontos para publicação</p>
+</header>
+
+<div class="grid">
+
+  <div class="card square">
+    <div class="card-meta">
+      <span class="card-date">17 Mai — Post 08</span>
+      <span class="card-pilar">Vida Real: A Mesa</span>
+    </div>
+    <img src="domingo-com-ele.png" alt="Domingo com Ele" loading="lazy">
+    <div>
+      <p class="card-title">Domingo com Ele.</p>
+      <p class="card-format">Post quadrado · 1080×1080</p>
+    </div>
+  </div>
+
+  <div class="card reel">
+    <div class="card-meta">
+      <span class="card-date">20 Mai — Post 10</span>
+      <span class="card-pilar">A Palavra que Confronta</span>
+    </div>
+    <img src="reel-conforto-transformacao.png" alt="Conforto ou Transformacao" loading="lazy">
+    <div>
+      <p class="card-title">Você tem buscado conforto ou transformação?</p>
+      <p class="card-format">Capa de Reel · 1080×1920</p>
+    </div>
+  </div>
+
+  <div class="card reel">
+    <div class="card-meta">
+      <span class="card-date">22 Mai — Post 11</span>
+      <span class="card-pilar">Ferramentas de Transformação</span>
+    </div>
+    <img src="reel-7dias-entrega.png" alt="7 Dias de Entrega" loading="lazy">
+    <div>
+      <p class="card-title">7 Dias de Entrega — primeiro CTA de captura</p>
+      <p class="card-format">Capa de Reel · 1080×1920</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Produzido por <span>Kaempf Business</span> para Ana Paula Heinen &nbsp;·&nbsp; Maio 2026
+</footer>
+
+</body>
+</html>
