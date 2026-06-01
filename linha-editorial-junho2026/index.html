@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linha Editorial de Junho 2026 · Obedecer para Romper · Ana Paula Heinen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --abismo:#0F0A1E; --roxo:#2D1463; --roxo-vivo:#6D28D9; --vinho:#7B1C4B;
+    --ouro:#B8860B; --ouro-b:#DEB23E; --ouro-bb:#FFD860;
+    --aurora:#F5E6C8; --aurora-d:#C6B89C; --aurora-dd:#8A806B;
+    --linha:rgba(184,134,11,0.22);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1200px 700px at 50% -200px, rgba(109,40,217,0.20), transparent 60%),
+      radial-gradient(900px 600px at 50% 100%, rgba(45,20,99,0.30), transparent 65%),
+      var(--abismo);
+    color:var(--aurora);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    min-height:100vh;
+    padding:0 0 100px;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  /* HEADER */
+  header{text-align:center;padding:96px 24px 60px;}
+  .kicker{font-size:12px;letter-spacing:0.34em;text-transform:uppercase;color:var(--ouro-b);margin-bottom:26px;font-weight:600;}
+  .cross{color:var(--ouro);font-size:15px;margin:0 12px;vertical-align:middle;opacity:.85;}
+  h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(44px,8vw,86px);line-height:1.02;color:var(--aurora);letter-spacing:.5px;}
+  h1 em{font-style:italic;color:var(--ouro-bb);font-weight:600;}
+  .sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,3vw,24px);color:var(--aurora-d);margin-top:22px;}
+  .meta{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--aurora-dd);margin-top:30px;}
+  .goldrule{width:90px;height:1px;background:linear-gradient(90deg,transparent,var(--ouro),transparent);margin:34px auto 0;}
+
+  /* SECTION TITLES */
+  .sec-label{display:flex;align-items:center;gap:18px;justify-content:center;margin:84px 0 14px;}
+  .sec-label::before,.sec-label::after{content:"";height:1px;width:60px;background:var(--linha);}
+  .sec-label span{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--ouro-b);font-weight:600;}
+  .sec-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(28px,5vw,42px);text-align:center;color:var(--aurora);margin-bottom:8px;}
+  .sec-intro{text-align:center;max-width:720px;margin:0 auto 12px;color:var(--aurora-d);font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;}
+
+  /* MANIFESTO */
+  .manifesto{
+    background:linear-gradient(160deg, rgba(45,20,99,0.40), rgba(15,10,30,0.20));
+    border:1px solid var(--linha);
+    border-radius:6px;
+    padding:48px 44px;
+    margin-top:54px;
+    position:relative;
+  }
+  .manifesto::before{content:"✝";position:absolute;top:22px;right:28px;color:var(--ouro);opacity:.5;font-size:22px;}
+  .manifesto p{font-family:'Cormorant Garamond',serif;font-size:clamp(19px,2.5vw,24px);color:var(--aurora);margin-bottom:18px;}
+  .manifesto p:last-child{margin-bottom:0;}
+  .manifesto .big{font-size:clamp(26px,4vw,38px);font-weight:600;color:var(--ouro-bb);line-height:1.2;}
+  .manifesto .ref{font-family:'Inter';font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ouro-b);margin-top:6px;}
+
+  /* FUNNEL */
+  .funnel{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;}
+  .phase{
+    border:1px solid var(--linha);border-radius:6px;padding:26px 22px;
+    background:rgba(15,10,30,0.45);position:relative;overflow:hidden;
+  }
+  .phase .ph-num{font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:600;color:rgba(184,134,11,0.30);line-height:1;}
+  .phase h3{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:var(--aurora);margin:6px 0 4px;}
+  .phase .ph-when{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ouro-b);margin-bottom:14px;}
+  .phase p{font-size:14.5px;color:var(--aurora-d);}
+  .phase .bar{position:absolute;left:0;top:0;height:3px;width:100%;}
+  .p1 .bar{background:var(--ouro);} .p2 .bar{background:var(--roxo-vivo);} .p3 .bar{background:var(--vinho);}
+
+  /* PILLARS */
+  .pillars{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:34px;}
+  .pill{border:1px solid var(--linha);border-radius:30px;padding:9px 18px;font-size:12.5px;letter-spacing:.04em;color:var(--aurora-d);background:rgba(45,20,99,0.18);}
+  .pill b{color:var(--aurora);font-weight:600;}
+
+  /* CALENDAR */
+  #cal{margin-top:30px;}
+  .phase-head{display:flex;align-items:baseline;gap:16px;margin:64px 0 24px;padding-bottom:14px;border-bottom:1px solid var(--linha);}
+  .phase-head .pn{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--ouro);font-weight:600;}
+  .phase-head .pt{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--aurora);font-weight:600;}
+  .phase-head .pw{margin-left:auto;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--aurora-dd);}
+
+  .card{
+    display:grid;grid-template-columns:104px 1fr;gap:26px;
+    border:1px solid var(--linha);border-left:3px solid var(--ouro);
+    border-radius:6px;padding:24px 28px;margin-bottom:16px;
+    background:rgba(15,10,30,0.40);transition:transform .2s ease, border-color .2s ease, background .2s ease;
+  }
+  .card:hover{transform:translateX(4px);border-left-color:var(--ouro-bb);background:rgba(45,20,99,0.22);}
+  .card.club{border-left-color:var(--roxo-vivo);}
+  .card.exp{border-left-color:var(--vinho);}
+  .date{text-align:center;}
+  .date .d{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:600;color:var(--aurora);line-height:1;}
+  .date .m{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--aurora-dd);margin-top:4px;}
+  .date .wd{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ouro-b);margin-top:8px;}
+  .body .top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px;}
+  .tag{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:4px;font-weight:600;}
+  .tag.pilar{background:rgba(184,134,11,0.16);color:var(--ouro-bb);border:1px solid var(--linha);}
+  .tag.fmt{background:rgba(109,40,217,0.18);color:#C9B6F5;border:1px solid rgba(109,40,217,0.3);}
+  .tag.num{color:var(--aurora-dd);border:1px solid var(--linha);}
+  .body h4{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:var(--aurora);line-height:1.2;margin-bottom:10px;}
+  .body .roteiro{font-size:14.5px;color:var(--aurora-d);margin-bottom:14px;}
+  .body .foot{display:flex;flex-wrap:wrap;gap:20px;align-items:center;font-size:13px;}
+  .body .base{color:var(--aurora);}
+  .body .base b{color:var(--ouro-b);font-weight:600;letter-spacing:.04em;}
+  .body .cta{color:var(--aurora-d);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:16px;}
+  .body .tags{margin-top:12px;font-size:12px;color:var(--aurora-dd);letter-spacing:.02em;}
+
+  /* DIRETRIZES */
+  .guide{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:34px;}
+  .g{border:1px solid var(--linha);border-radius:6px;padding:22px 24px;background:rgba(15,10,30,0.40);}
+  .g h5{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:var(--ouro-bb);margin-bottom:6px;}
+  .g p{font-size:14px;color:var(--aurora-d);}
+
+  footer{text-align:center;margin-top:90px;font-size:12px;letter-spacing:.12em;color:var(--aurora-dd);}
+  footer b{color:var(--ouro-b);font-weight:600;}
+
+  @media(max-width:720px){
+    .funnel{grid-template-columns:1fr;}
+    .guide{grid-template-columns:1fr;}
+    .card{grid-template-columns:1fr;gap:14px;}
+    .date{display:flex;align-items:baseline;gap:12px;text-align:left;}
+    .date .d{font-size:32px;} .date .wd{margin-top:0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">Linha Editorial <span class="cross">✝</span> Junho de 2026</div>
+  <h1>Obedecer<br>para <em>Romper</em></h1>
+  <p class="sub">A palavra que o Pai entregou para este mês</p>
+  <p class="meta">@anaheinenterapeuta &nbsp;·&nbsp; Estratégia Kaempf Business</p>
+  <div class="goldrule"></div>
+</header>
+
+<div class="wrap">
+
+  <!-- MANIFESTO -->
+  <div class="sec-label"><span>A Mensagem</span></div>
+  <h2 class="sec-title">O coração de junho</h2>
+  <div class="manifesto">
+    <p>Existe uma ordem no Reino que o mundo inverte. O mundo espera ver para crer. O mundo espera sentir para agir. Mas Deus chama as suas filhas a obedecer antes de entender, a dar o primeiro passo sem ver o mapa inteiro.</p>
+    <p class="big">Não existe rompimento sem obediência. A obediência vem primeiro. O mar só se abre quando o pé toca a água.</p>
+    <p>Abraão saiu sem saber para onde. José foi fiel no porão antes do palácio. Os dois confiaram no escuro, e Deus rompeu na hora certa. Junho é sobre isso: confiança que não exige explicação e fé que amadurece na espera.</p>
+    <p>"Se quiserem e me obedecerem, comerão os melhores frutos desta terra."</p>
+    <p class="ref">Isaías 1:19</p>
+  </div>
+
+  <!-- FUNIL -->
+  <div class="sec-label"><span>A Estratégia</span></div>
+  <h2 class="sec-title">Um funil que é ministério</h2>
+  <p class="sec-intro">A venda é consequência do ministério, nunca o contrário. Mostramos o fruto e deixamos o Espírito convencer. Três fases que conduzem da Palavra ao convite, sem nunca trair o propósito.</p>
+  <div class="funnel">
+    <div class="phase p1"><div class="bar"></div>
+      <div class="ph-num">01</div>
+      <h3>A Mensagem</h3>
+      <div class="ph-when">01 a 14 de junho</div>
+      <p>Obedecer para romper. Pura entrega da Palavra através de Abraão e José. Atrai e transforma. Constrói a fundação espiritual do mês, sem citar o Clube.</p>
+    </div>
+    <div class="phase p2"><div class="bar"></div>
+      <div class="ph-num">02</div>
+      <h3>O Clube</h3>
+      <div class="ph-when">16 a 24 de junho</div>
+      <p>A transformação acontecendo. Prova social ministerial: mulheres do Clube da Oração sendo transformadas pela Palavra e encantadas. Fruto, testemunho e bastidor, sem venda dura.</p>
+    </div>
+    <div class="phase p3"><div class="bar"></div>
+      <div class="ph-num">03</div>
+      <h3>A Expectativa</h3>
+      <div class="ph-when">26 a 30 de junho</div>
+      <p>Semear o desejo da próxima abertura. A partir do fim do mês, falar intencionalmente da nova turma de julho e abrir a lista de espera. Escassez real, pelo cuidado.</p>
+    </div>
+  </div>
+
+  <!-- PILARES -->
+  <div class="sec-label"><span>Os Pilares</span></div>
+  <h2 class="sec-title">Vozes que se repetem</h2>
+  <div class="pillars">
+    <div class="pill"><b>A Palavra que Confronta</b> · ensino que cutuca para transformar</div>
+    <div class="pill"><b>Minha História</b> · testemunho pessoal da Ana</div>
+    <div class="pill"><b>Ferramentas de Transformação</b> · prática espiritual aplicável</div>
+    <div class="pill"><b>Vida Real: A Mesa</b> · domingo, intimidade, presença</div>
+    <div class="pill"><b>O Clube da Oração</b> · comunidade e prova social</div>
+    <div class="pill"><b>A Expectativa</b> · antecipação da abertura</div>
+  </div>
+
+  <!-- CALENDARIO -->
+  <div class="sec-label"><span>O Calendário</span></div>
+  <h2 class="sec-title">16 posts, um só caminho</h2>
+  <div id="cal"></div>
+
+  <!-- DIRETRIZES -->
+  <div class="sec-label"><span>As Diretrizes</span></div>
+  <h2 class="sec-title">O que protege a integridade</h2>
+  <div class="guide">
+    <div class="g"><h5>A glória é d'Ele</h5><p>Em todo testemunho, o herói é Deus, nunca o Clube nem a Ana. Isso protege o ministério e, no fim, fortalece a autoridade dela.</p></div>
+    <div class="g"><h5>Consentimento e dignidade</h5><p>Nenhuma membro é exposta sem permissão. Sempre ofereça anonimato: tarja, só o primeiro nome, sem rosto. A vulnerabilidade delas é tratada com cuidado.</p></div>
+    <div class="g"><h5>Escassez saudável, não medo</h5><p>As vagas são limitadas porque cuidado de verdade não cabe em multidão. É verdade, não tática. Se a porta fecha dia tal, ela fecha de verdade.</p></div>
+    <div class="g"><h5>Servir primeiro, convidar depois</h5><p>Muito mais conteúdo de valor do que de oferta. O convite é a consequência natural de quem já foi servido com Palavra e oração.</p></div>
+    <div class="g"><h5>Autenticidade vence estética</h5><p>Em 2026, presença real converte mais que arte impecável. Rosto, voz, áudio e bastidor verdadeiros acima do produzido demais.</p></div>
+    <div class="g"><h5>Relacionamento de longo prazo</h5><p>Quem não entrar nesta turma continua sendo servido e avisado na próxima. Fechar a porta com gentileza vale mais que forçar uma conversão hoje.</p></div>
+  </div>
+
+  <footer>
+    Produzido por <b>Kaempf Business</b> para Ana Paula Heinen &nbsp;·&nbsp; Junho de 2026<br>
+    Passagens conferidas (NVI e ARA) &nbsp;·&nbsp; Obedecer para Romper
+  </footer>
+</div>
+
+<script>
+const posts = [
+  {phase:1, n:"01", d:"01", wd:"Segunda", pilar:"A Palavra que Confronta", fmt:"Reel",
+   title:"A palavra que o Pai me deu para junho.",
+   roteiro:"Abertura do mês. Ana compartilha, com peso, a palavra que recebeu: você não rompe sem obedecer primeiro. Apresenta o tema e prepara o coração das mulheres para um mês de confiança e fé que amadurece.",
+   base:"Isaías 1:19", cta:"Comenta AMÉM se essa palavra é para você.",
+   tags:"#obedecerpararomper #féquerompe #confiarEmDeus #fébíblica #anaheinen"},
+
+  {phase:1, n:"02", d:"03", wd:"Quarta", pilar:"A Palavra que Confronta", fmt:"Carrossel",
+   title:"Deus não te mostra o mapa. Te mostra o primeiro passo.",
+   roteiro:"Abraão saiu de Harã sem saber o destino. A fé madura caminha pela palavra, não pela vista. Confrontar o desejo de ver tudo antes de obedecer.",
+   base:"Gênesis 12:1 · Hebreus 11:8", cta:"Qual primeiro passo Deus já te mandou dar e você ainda não deu?",
+   tags:"#Abraão #obediência #fé #primeiropasso #anaheinen"},
+
+  {phase:1, n:"03", d:"05", wd:"Sexta", pilar:"Ferramentas de Transformação", fmt:"Reel",
+   title:"Adore antes do cumprimento.",
+   roteiro:"Abraão ergueu altar numa terra que ainda não era dele. Para a mulher que precisa louvar no ainda não, antes de ver a promessa cumprida. Ferramenta: a adoração na espera.",
+   base:"Gênesis 12:7", cta:"Comenta uma área onde você precisa adorar antes de ver.",
+   tags:"#adoração #confiança #esperança #fé #anaheinen"},
+
+  {phase:1, n:"04", d:"07", wd:"Domingo", pilar:"Vida Real: A Mesa", fmt:"Foto ou Vídeo",
+   title:"Obedecer começa nas pequenas coisas.",
+   roteiro:"Domingo na mesa, café, Bíblia aberta. Tom acolhedor. Quem é fiel no pouco é fiel no muito. Obediência não é só nos grandes saltos, é no detalhe da rotina.",
+   base:"Lucas 16:10", cta:"Como está seu domingo com Ele? Conta aqui.",
+   tags:"#domingocomEle #fielnopouco #vidacristã #fé #anaheinen"},
+
+  {phase:1, n:"05", d:"09", wd:"Terça", pilar:"A Palavra que Confronta", fmt:"Carrossel",
+   title:"Soltar não é perder.",
+   roteiro:"Abraão cedeu a melhor terra a Ló e Deus ampliou a promessa logo depois. Confrontar o controle. Quem confia não precisa agarrar. Soltar pode ser o caminho do aumento.",
+   base:"Gênesis 13:8-17", cta:"O que Deus está pedindo para você soltar?",
+   tags:"#soltarocontrole #confiança #fé #provisão #anaheinen"},
+
+  {phase:1, n:"06", d:"11", wd:"Quinta", pilar:"A Palavra que Confronta", fmt:"Reel",
+   title:"Fiel no porão, pronta para o palácio.",
+   roteiro:"José servindo com excelência mesmo como escravo. Fidelidade no oculto prepara para o muito. Amadurecimento de fé no lugar pequeno e sem palco.",
+   base:"Gênesis 39:2-4", cta:"Comenta FIEL se você vai honrar a Deus mesmo no lugar pequeno.",
+   tags:"#José #fidelidade #amadurecimento #propósito #anaheinen"},
+
+  {phase:1, n:"07", d:"13", wd:"Sábado", pilar:"Minha História", fmt:"Carrossel",
+   title:"Às vezes a obediência custa a reputação.",
+   roteiro:"José foi preso por fazer o certo. Para a mulher que obedece e parece estar perdendo. Integridade no escuro é fé que amadureceu. Ana conecta com a própria caminhada.",
+   base:"Gênesis 39:9, 20-21", cta:"Você já obedeceu e pareceu estar perdendo? Comenta.",
+   tags:"#integridade #obediência #fénoescuro #testemunho #anaheinen"},
+
+  {phase:1, n:"08", d:"14", wd:"Domingo", pilar:"Vida Real: A Mesa", fmt:"Reel ou Vídeo",
+   title:"Sua maior entrega abre sua maior promessa.",
+   roteiro:"Clímax da mensagem. O monte Moriá: Abraão entrega o que mais ama e Deus provê o carneiro (Jeová-Jiré). A provisão aparece dentro da obediência, não antes. Tom íntimo de domingo.",
+   base:"Gênesis 22:14, 16-18", cta:"Comenta o que você está sendo chamada a entregar.",
+   tags:"#entrega #JeováJiré #provisão #confiança #anaheinen"},
+
+  {phase:2, n:"09", d:"16", wd:"Terça", pilar:"O Clube da Oração", fmt:"Reel",
+   title:"O que acontece quando mulheres oram juntas?",
+   roteiro:"Ponte da mensagem para o Clube. Obedecer para romper não foi feito para se viver sozinha. Apresenta o Clube, com leveza, como o lugar onde a obediência vira comunidade. Sem menção a vagas.",
+   base:"Eclesiastes 4:9-10 · Mateus 18:20", cta:"Comenta ORAÇÃO se você sente falta de orar em comunidade.",
+   tags:"#clubedaoração #oração #mulheresdefé #comunidade #anaheinen"},
+
+  {phase:2, n:"10", d:"18", wd:"Quinta", pilar:"O Clube da Oração", fmt:"Carrossel ou Vídeo",
+   title:"Ela chegou sem conseguir orar. Olha o que a Palavra fez.",
+   roteiro:"Testemunho de transformação de uma membro (com permissão, anonimato se preferir). O antes e depois espiritual. Foco na mudança interior, glória a Deus. Prova social como testemunho, não venda.",
+   base:"2 Coríntios 5:17", cta:"Marca uma irmã que precisa ler isso hoje.",
+   tags:"#testemunho #transformação #novacriatura #oração #anaheinen"},
+
+  {phase:2, n:"11", d:"20", wd:"Sábado", pilar:"Vida Real / Clube", fmt:"Reel ou Foto",
+   title:"O bastidor da minha vida de oração.",
+   roteiro:"Ana orando de manhã, o caderno de orações, a Bíblia, a vela. Ela vive o que ensina. Transfere autoridade e intimidade. Conecta naturalmente ao que se vive no Clube.",
+   base:"Marcos 1:35", cta:"Como tem sido sua vida de oração? Comenta.",
+   tags:"#vidadeoração #bastidor #intimidadecomDeus #oração #anaheinen"},
+
+  {phase:2, n:"12", d:"21", wd:"Domingo", pilar:"Vida Real: A Mesa", fmt:"Foto ou Vídeo",
+   title:"Você se sente sozinha na sua fé?",
+   roteiro:"O ângulo da solidão. Muitas mulheres cristãs se sentem sozinhas na caminhada. No Clube elas têm irmãs que oram por elas pelo nome. Pertencimento. Tom de domingo, acolhedor.",
+   base:"Romanos 12:5", cta:"Desabafa aqui: você se sente sozinha na sua fé?",
+   tags:"#irmandade #pertencimento #mulhercristã #comunidade #anaheinen"},
+
+  {phase:2, n:"13", d:"24", wd:"Quarta", pilar:"O Clube da Oração", fmt:"Carrossel",
+   title:"Não é uma exceção. É o que acontece aqui dentro.",
+   roteiro:"Mural de frutos. Carrossel reunindo 5 a 7 falas curtas de membros diferentes (com permissão). O volume comunica que a transformação é a regra, não o acaso. Toda glória a Deus.",
+   base:"Salmos 92:13-14", cta:"Comenta AMÉM por essas mulheres.",
+   tags:"#frutos #transformação #clubedaoração #testemunho #anaheinen"},
+
+  {phase:3, n:"14", d:"26", wd:"Sexta", pilar:"A Expectativa", fmt:"Reel + Stories",
+   title:"Tem algo sendo preparado para quem quer viver isso de perto.",
+   roteiro:"Primeira semente da abertura. Sem data, sem link, só curiosidade. Habacuque: a visão tem um tempo determinado, espera. Começa a despertar o desejo de quem acompanhou o mês inteiro.",
+   base:"Habacuque 2:3", cta:"Comenta EU QUERO saber quando chegar a hora.",
+   tags:"#embreve #clubedaoração #vidadeoração #expectativa #anaheinen"},
+
+  {phase:3, n:"15", d:"28", wd:"Domingo", pilar:"Minha História / Expectativa", fmt:"Vídeo",
+   title:"Por que eu criei o Clube da Oração.",
+   roteiro:"Storytelling do chamado. Ana conta, no tom pessoal de domingo, a história e o chamado por trás do Clube. Conexão com a missão. Prepara o terreno para a abertura de julho.",
+   base:"1 Tessalonicenses 5:11", cta:"Comenta se você quer fazer parte da próxima turma.",
+   tags:"#meuchamado #clubedaoração #propósito #ministério #anaheinen"},
+
+  {phase:3, n:"16", d:"30", wd:"Terça", pilar:"A Expectativa", fmt:"Carrossel ou Vídeo",
+   title:"Em julho eu abro um novo grupo. A lista já começou.",
+   roteiro:"Fechamento de junho e abertura da lista de espera. Aquele que começou a boa obra vai completar. As vagas são limitadas porque cuidado de verdade não cabe em multidão. Convite honesto, sem pressão.",
+   base:"Filipenses 1:6", cta:"Comenta EU QUERO que eu te aviso primeiro quando as portas abrirem.",
+   tags:"#clubedaoração #listadeespera #julho #mulhercristã #anaheinen"},
+];
+
+const phaseMeta = {
+  1:{pn:"Fase 01", pt:"A Mensagem: Obedecer para Romper", pw:"01 a 14 de junho", cls:""},
+  2:{pn:"Fase 02", pt:"O Clube: A Transformação Acontecendo", pw:"16 a 24 de junho", cls:"club"},
+  3:{pn:"Fase 03", pt:"A Expectativa: Abertura em Julho", pw:"26 a 30 de junho", cls:"exp"},
+};
+
+const cal = document.getElementById('cal');
+let current = 0;
+posts.forEach(p => {
+  if(p.phase !== current){
+    current = p.phase;
+    const m = phaseMeta[current];
+    const head = document.createElement('div');
+    head.className = 'phase-head';
+    head.innerHTML = `<span class="pn">${m.pn}</span><span class="pt">${m.pt}</span><span class="pw">${m.pw}</span>`;
+    cal.appendChild(head);
+  }
+  const m = phaseMeta[p.phase];
+  const card = document.createElement('div');
+  card.className = 'card ' + m.cls;
+  card.innerHTML = `
+    <div class="date">
+      <div class="d">${p.d}</div>
+      <div class="m">Junho</div>
+      <div class="wd">${p.wd}</div>
+    </div>
+    <div class="body">
+      <div class="top">
+        <span class="tag num">Post ${p.n} de 16</span>
+        <span class="tag pilar">${p.pilar}</span>
+        <span class="tag fmt">${p.fmt}</span>
+      </div>
+      <h4>${p.title}</h4>
+      <div class="roteiro">${p.roteiro}</div>
+      <div class="foot">
+        <span class="base">Base: <b>${p.base}</b></span>
+        <span class="cta">${p.cta}</span>
+      </div>
+      <div class="tags">${p.tags}</div>
+    </div>`;
+  cal.appendChild(card);
+});
+</script>
+
+</body>
+</html>
