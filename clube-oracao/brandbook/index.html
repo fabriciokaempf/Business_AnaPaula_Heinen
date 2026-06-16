@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brandbook · Clube da Oração · Ana Paula Heinen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --marfim:#F4EBD8; --pergaminho:#FBF5E8; --luz:#FFFBF2;
+    --ouro:#B8860B; --ouro-lum:#D9B45A; --ambar:#E8C877; --bronze:#8A6420;
+    --marrom:#3D3122; --marrom-suave:#6B5A42; --taupe:#B3A78D;
+    --roxo:#2D1463;
+    --linha:rgba(184,134,11,0.26);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--marfim);
+    color:var(--marrom);
+    font-family:'Inter',sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  .section{padding:84px 0;border-bottom:1px solid var(--linha);}
+  .kicker{font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:var(--bronze);font-weight:600;margin-bottom:20px;}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--marrom);line-height:1.08;}
+  h2{font-size:clamp(30px,5vw,48px);margin-bottom:10px;}
+  h3{font-size:26px;margin-bottom:8px;}
+  p{margin-bottom:14px;max-width:62ch;}
+  .lead{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.6vw,26px);font-style:italic;color:var(--marrom-suave);}
+  .gold{color:var(--ouro);}
+  em.x{color:var(--bronze);font-style:italic;}
+  .rule{width:70px;height:2px;background:linear-gradient(90deg,var(--ouro),transparent);margin:22px 0;}
+
+  /* HERO */
+  .hero{
+    min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+    background:
+      radial-gradient(620px 520px at 50% 38%, rgba(232,200,119,0.55), transparent 70%),
+      radial-gradient(900px 700px at 50% 120%, rgba(179,167,141,0.30), transparent 70%),
+      var(--pergaminho);
+    position:relative;padding:60px 32px;
+  }
+  .hero .selo{width:150px;height:150px;margin-bottom:30px;}
+  .hero h1{font-size:clamp(48px,10vw,104px);letter-spacing:1px;}
+  .hero .sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,3vw,26px);color:var(--marrom-suave);margin-top:14px;}
+  .hero .meta{position:absolute;bottom:34px;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--taupe);}
+
+  /* MANIFESTO */
+  .manifesto p{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.7vw,28px);color:var(--marrom);max-width:36ch;}
+  .manifesto .big{font-size:clamp(28px,4.4vw,44px);font-weight:600;color:var(--bronze);line-height:1.15;max-width:18ch;}
+  .verse{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--marrom-suave);margin-top:6px;}
+  .verse b{font-family:'Inter';font-style:normal;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ouro);display:block;margin-top:8px;font-weight:600;}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:30px;}
+  .card{background:var(--luz);border:1px solid var(--linha);border-radius:8px;padding:30px;}
+  .card h3{color:var(--bronze);}
+  .card .tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ouro);font-weight:600;margin-bottom:10px;}
+
+  /* ARCHETYPE */
+  .arch{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:28px;}
+  .arch .a{background:var(--luz);border:1px solid var(--linha);border-radius:8px;padding:30px;}
+  .arch .a .lab{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ouro);font-weight:600;}
+  .arch .a h3{font-size:30px;margin:4px 0 10px;}
+
+  /* COLORS */
+  .palette{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px;}
+  .sw{border-radius:8px;overflow:hidden;border:1px solid var(--linha);background:var(--luz);}
+  .sw .chip{height:108px;}
+  .sw .info{padding:12px 14px;}
+  .sw .nm{font-weight:600;font-size:13px;color:var(--marrom);}
+  .sw .hx{font-size:12px;color:var(--marrom-suave);letter-spacing:.04em;}
+  .sw .use{font-size:11px;color:var(--taupe);margin-top:4px;}
+  @media(max-width:760px){.palette{grid-template-columns:repeat(2,1fr);}.grid2,.arch{grid-template-columns:1fr;}}
+
+  /* TYPE */
+  .type-row{display:flex;align-items:baseline;gap:20px;border-top:1px solid var(--linha);padding:22px 0;flex-wrap:wrap;}
+  .type-row .label{width:150px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ouro);font-weight:600;flex-shrink:0;}
+  .spec-serif{font-family:'Cormorant Garamond',serif;}
+  .spec-sans{font-family:'Inter',sans-serif;}
+
+  /* LOGO */
+  .logo-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center;margin-top:26px;}
+  .logo-stage{background:var(--pergaminho);border:1px solid var(--linha);border-radius:10px;display:flex;align-items:center;justify-content:center;padding:48px;min-height:300px;
+    background-image:radial-gradient(420px 360px at 50% 42%, rgba(232,200,119,0.5), transparent 70%);}
+  .meaning li{list-style:none;padding:12px 0;border-bottom:1px solid var(--linha);display:flex;gap:14px;}
+  .meaning li b{color:var(--bronze);font-family:'Cormorant Garamond',serif;font-size:19px;min-width:118px;}
+  .versions{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
+  .ver{border:1px solid var(--linha);border-radius:8px;overflow:hidden;text-align:center;}
+  .ver .box{height:130px;display:flex;align-items:center;justify-content:center;}
+  .ver .cap{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--marrom-suave);padding:10px;}
+
+  /* DOS */
+  .dos{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:28px;}
+  .dos .col h3{display:flex;align-items:center;gap:10px;}
+  .dos .yes h3{color:#5C7A3A;} .dos .no h3{color:#9B4A39;}
+  .dos ul{margin-top:10px;padding-left:0;}
+  .dos li{list-style:none;padding:9px 0;border-bottom:1px solid var(--linha);font-size:14.5px;color:var(--marrom-suave);}
+  .dos li::before{content:"";display:inline-block;width:14px;}
+  .dos .yes li::before{content:"+ ";color:#5C7A3A;font-weight:700;}
+  .dos .no li::before{content:"x ";color:#9B4A39;font-weight:700;}
+
+  /* APPLICATIONS */
+  .apps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;}
+  .app{background:var(--luz);border:1px solid var(--linha);border-radius:8px;padding:24px;}
+  .app .n{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--ouro-lum);line-height:1;}
+  .app h3{font-size:20px;margin:8px 0 6px;}
+  .app p{font-size:13.5px;color:var(--marrom-suave);margin:0;}
+  @media(max-width:760px){.apps,.versions{grid-template-columns:1fr;}.logo-grid{grid-template-columns:1fr;}}
+
+  footer{text-align:center;padding:60px 32px;color:var(--taupe);font-size:12px;letter-spacing:.1em;}
+  footer b{color:var(--ouro);}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="selo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Selo Clube da Oração">
+    <circle cx="50" cy="52" r="38" stroke="#B8860B" stroke-width="1.4"/>
+    <g stroke="#B8860B" stroke-width="2.2" stroke-linecap="round">
+      <line x1="50" y1="8" x2="50" y2="22"/>
+      <line x1="44" y1="13.5" x2="56" y2="13.5"/>
+    </g>
+    <circle cx="50" cy="50" r="15" fill="#E8C877" opacity="0.55"/>
+    <circle cx="50" cy="50" r="7" fill="#FFFBF2" opacity="0.9"/>
+    <path d="M20 70 L38 54 L50 64 L64 48 L80 70 Z" fill="#B8860B" opacity="0.85"/>
+  </svg>
+  <h1>Clube da <span class="gold">Oração</span></h1>
+  <p class="sub">A Palavra que renova a mente e transforma a vida.</p>
+  <p class="meta">Brandbook &nbsp;·&nbsp; Ana Paula Heinen &nbsp;·&nbsp; Kaempf Business &nbsp;·&nbsp; 2026</p>
+</section>
+
+<!-- MANIFESTO -->
+<section class="section manifesto">
+  <div class="wrap">
+    <p class="kicker">A Essência</p>
+    <p>Existe uma oração que não apenas pede. Ela <em class="x">renova</em>.</p>
+    <p class="big">O Clube da Oração é o lugar onde a mente cansada encontra a Palavra e volta inteira.</p>
+    <p>Não é só estudo, e não é só oração. É a Palavra descendo do papel para a vida real, uma semana de cada vez, em comunidade. Aqui a mulher não recebe mais informação. Ela recebe transformação, com base bíblica e aplicação prática.</p>
+    <p class="verse">"Transformai-vos pela renovação da vossa mente."<b>Romanos 12:2</b></p>
+  </div>
+</section>
+
+<!-- POSICIONAMENTO -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Posicionamento</p>
+    <h2>Um clube, não um curso</h2>
+    <div class="grid2">
+      <div class="card">
+        <p class="tag">O que é</p>
+        <p>Um programa de 12 semanas de desenvolvimento pessoal e espiritual com base bíblica aplicada. A cada semana: um tema, uma oração para viver e uma atividade prática. Conteúdo gravado, comunidade viva.</p>
+      </div>
+      <div class="card">
+        <p class="tag">Para quem</p>
+        <p>Mulheres que querem crescer (mente, identidade, sabedoria, confiança) com a fé como base, e não como enfeite. Que já cansaram de conteúdo que informa mas não transforma.</p>
+      </div>
+      <div class="card">
+        <p class="tag">O diferencial</p>
+        <p>A trindade da transformação: Palavra estudada, oração orada e prática aplicada. Em comunidade, com acompanhamento. Não se sai do Clube sabendo mais. Sai-se sendo outra.</p>
+      </div>
+      <div class="card">
+        <p class="tag">Relação com a marca-mãe</p>
+        <p>O feed de <b>@anaheinenterapeuta</b> confronta (escuro, a luz que revela). O Clube acolhe e desenvolve (claro, a luz que aquece). Mesma alma, duas expressões. O confronto traz a mulher. O Clube a forma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARQUETIPO -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Arquétipo</p>
+    <h2>A Sábia que cuida</h2>
+    <p class="lead">A marca ensina com profundidade e abraça com ternura. Autoridade sem frieza, acolhimento sem rasura da verdade.</p>
+    <div class="arch">
+      <div class="a">
+        <p class="lab">Arquétipo primário</p>
+        <h3>O Sábio</h3>
+        <p>Verdade, discernimento, estudo, clareza. A marca existe para iluminar a mente e revelar o que a Palavra ensina sobre a vida. Profundidade que liberta.</p>
+      </div>
+      <div class="a">
+        <p class="lab">Arquétipo secundário</p>
+        <h3>O Cuidador</h3>
+        <p>Oração, comunidade, segurança, presença. A marca caminha junto, ora pelo nome, sustenta no escuro. Ninguém cresce sozinha aqui.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOM DE VOZ -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Tom de Voz</p>
+    <h2>Como o Clube fala</h2>
+    <div class="dos">
+      <div class="col yes">
+        <h3>A voz é</h3>
+        <ul>
+          <li>Acolhedora e maternal, sem ser infantil</li>
+          <li>Sábia e bíblica, com a Palavra como âncora</li>
+          <li>Prática: sempre aterrissa na vida real</li>
+          <li>Encorajadora: chama para cima, não aponta para baixo</li>
+          <li>Íntima: fala com uma mulher, não com uma plateia</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h3>A voz não é</h3>
+        <ul>
+          <li>Pregação dura ou tom de púlpito distante</li>
+          <li>Clichê gospel ou frases prontas de adesivo</li>
+          <li>Vendedora ou de urgência forçada</li>
+          <li>Acadêmica fria, cheia de jargão teológico</li>
+          <li>Genérica de autoajuda sem a Palavra</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORES -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Cores</p>
+    <h2>A luz da manhã</h2>
+    <p class="lead">A paleta é o nascer do dia: marfim quente, ouro de vela e a luz que toca o cume. Clara e acolhedora, oposta proposital ao escuro confrontador do feed principal.</p>
+    <div class="palette">
+      <div class="sw"><div class="chip" style="background:#F4EBD8"></div><div class="info"><div class="nm">Marfim</div><div class="hx">#F4EBD8</div><div class="use">Fundo principal</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FFFBF2"></div><div class="info"><div class="nm">Branco Luz</div><div class="hx">#FFFBF2</div><div class="use">Cards, respiro</div></div></div>
+      <div class="sw"><div class="chip" style="background:#E8C877"></div><div class="info"><div class="nm">Âmbar</div><div class="hx">#E8C877</div><div class="use">Brilho, halo, luz</div></div></div>
+      <div class="sw"><div class="chip" style="background:#D9B45A"></div><div class="info"><div class="nm">Ouro Luminoso</div><div class="hx">#D9B45A</div><div class="use">Destaques quentes</div></div></div>
+      <div class="sw"><div class="chip" style="background:#B8860B"></div><div class="info"><div class="nm">Ouro da Fé</div><div class="hx">#B8860B</div><div class="use">Primária, liga à Ana</div></div></div>
+      <div class="sw"><div class="chip" style="background:#8A6420"></div><div class="info"><div class="nm">Bronze</div><div class="hx">#8A6420</div><div class="use">Títulos, contraste</div></div></div>
+      <div class="sw"><div class="chip" style="background:#3D3122"></div><div class="info"><div class="nm">Marrom Palavra</div><div class="hx">#3D3122</div><div class="use">Texto principal</div></div></div>
+      <div class="sw"><div class="chip" style="background:#2D1463"></div><div class="info"><div class="nm">Roxo Profundo</div><div class="hx">#2D1463</div><div class="use">Conexão Ana, raro</div></div></div>
+    </div>
+    <div class="rule"></div>
+    <p style="font-size:14px;color:var(--marrom-suave)">O <b>Roxo Profundo</b> é o fio que liga o Clube ao brand-mãe da Ana. Usar com parcimônia (uma assinatura, um detalhe), nunca como protagonista. O Clube é território da luz.</p>
+  </div>
+</section>
+
+<!-- TIPOGRAFIA -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Tipografia</p>
+    <h2>Herança e clareza</h2>
+    <p class="lead">As mesmas fontes da marca-mãe, para o Clube ser filho e não estranho. A serifa carrega a alma, a sem serifa carrega a estrutura.</p>
+    <div class="type-row">
+      <div class="label">Display · Títulos</div>
+      <div>
+        <div class="spec-serif" style="font-size:52px;font-weight:600;color:var(--marrom);line-height:1.05;">Cormorant Garamond</div>
+        <div class="spec-serif" style="font-size:22px;font-style:italic;color:var(--marrom-suave);">Elegância sagrada, peso 500 e 600. Itálico para a Palavra.</div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="label">Texto · Labels</div>
+      <div>
+        <div class="spec-sans" style="font-size:34px;font-weight:600;color:var(--marrom);">Inter</div>
+        <div class="spec-sans" style="font-size:15px;color:var(--marrom-suave);max-width:52ch;margin-top:4px;">Clareza moderna para corpo de texto, legendas e rótulos. Pesos 400 a 700. Rótulos em caixa alta com espaçamento amplo.</div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="label">Aplicação</div>
+      <div>
+        <div class="spec-serif" style="font-size:40px;font-weight:600;color:var(--bronze);line-height:1.1;">A sabedoria começa no temor do Senhor.</div>
+        <div class="spec-sans" style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro);font-weight:600;margin-top:10px;">Semana 03 · Sabedoria · Provérbios 9:10</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">O Símbolo</p>
+    <h2>Mãos, mente e luz</h2>
+    <div class="logo-grid">
+      <div class="logo-stage">
+        <svg width="220" height="220" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="52" r="40" stroke="#B8860B" stroke-width="1.3"/>
+          <g stroke="#B8860B" stroke-width="2.4" stroke-linecap="round">
+            <line x1="50" y1="6" x2="50" y2="21"/><line x1="43.5" y1="12" x2="56.5" y2="12"/>
+          </g>
+          <circle cx="50" cy="48" r="17" fill="#E8C877" opacity="0.5"/>
+          <circle cx="50" cy="48" r="8" fill="#FFFBF2" opacity="0.95"/>
+          <path d="M18 72 L37 54 L50 65 L64 49 L82 72 Z" fill="#B8860B" opacity="0.9"/>
+        </svg>
+      </div>
+      <div>
+        <h3 style="color:var(--bronze)">Cada elemento prega</h3>
+        <ul class="meaning">
+          <li><b>Mãos em oração</b><span>A oração como centro e gesto. O ponto de partida de tudo.</span></li>
+          <li><b>Mente iluminada</b><span>A renovação da mente (Romanos 12:2). Sabedoria, identidade, discernimento.</span></li>
+          <li><b>A cruz</b><span>Cristo no alto, a fonte. Nada acontece sem Ele.</span></li>
+          <li><b>O círculo</b><span>A comunidade, o clube, o todo. A eternidade que abraça.</span></li>
+          <li><b>As montanhas</b><span>A jornada e a elevação. "Elevo os meus olhos para os montes" (Salmo 121).</span></li>
+        </ul>
+      </div>
+    </div>
+    <h3 style="margin-top:46px;color:var(--bronze)">Versões</h3>
+    <div class="versions">
+      <div class="ver"><div class="box" style="background:#FBF5E8;">
+        <svg width="84" height="84" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="52" r="40" stroke="#B8860B" stroke-width="1.6"/><g stroke="#B8860B" stroke-width="2.6" stroke-linecap="round"><line x1="50" y1="6" x2="50" y2="21"/><line x1="43.5" y1="12" x2="56.5" y2="12"/></g><circle cx="50" cy="48" r="9" fill="#E8C877"/><path d="M20 72 L38 55 L50 65 L64 50 L80 72 Z" fill="#B8860B"/></svg>
+      </div><div class="cap">Principal · sobre marfim</div></div>
+      <div class="ver"><div class="box" style="background:#0F0A1E;">
+        <svg width="84" height="84" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="52" r="40" stroke="#D9B45A" stroke-width="1.6"/><g stroke="#D9B45A" stroke-width="2.6" stroke-linecap="round"><line x1="50" y1="6" x2="50" y2="21"/><line x1="43.5" y1="12" x2="56.5" y2="12"/></g><circle cx="50" cy="48" r="9" fill="#E8C877"/><path d="M20 72 L38 55 L50 65 L64 50 L80 72 Z" fill="#D9B45A"/></svg>
+      </div><div class="cap">Ouro · sobre escuro (feed da Ana)</div></div>
+      <div class="ver"><div class="box" style="background:#B8860B;">
+        <svg width="84" height="84" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="52" r="40" stroke="#FFFBF2" stroke-width="1.6"/><g stroke="#FFFBF2" stroke-width="2.6" stroke-linecap="round"><line x1="50" y1="6" x2="50" y2="21"/><line x1="43.5" y1="12" x2="56.5" y2="12"/></g><circle cx="50" cy="48" r="9" fill="#FFFBF2"/><path d="M20 72 L38 55 L50 65 L64 50 L80 72 Z" fill="#FFFBF2"/></svg>
+      </div><div class="cap">Monocromática · creme</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LINGUAGEM VISUAL -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Linguagem Visual</p>
+    <h2>Os elementos do Clube</h2>
+    <div class="grid2">
+      <div class="card"><p class="tag">A luz e o glow</p><p>A presença de Deus e a mente que se ilumina. Luz suave e quente, sempre com desfoque real, nunca brilho chapado. A luz aquece, não ofusca.</p></div>
+      <div class="card"><p class="tag">O círculo</p><p>O selo do Clube. A comunidade que abraça. Usado como moldura, carimbo ou marca d'água sutil.</p></div>
+      <div class="card"><p class="tag">As montanhas</p><p>A jornada das 12 semanas. Linha de cume simples e dourada, presente como rodapé gráfico nas peças.</p></div>
+      <div class="card"><p class="tag">A linha dourada</p><p>Herança da Ana: filete fino, às vezes com uma cruz minúscula no centro. O fio que costura tudo.</p></div>
+      <div class="card"><p class="tag">Textura de papel</p><p>Grão sutil e calor tátil de pergaminho. Tira o aspecto digital frio, traz o sagrado e o artesanal.</p></div>
+      <div class="card"><p class="tag">Referência bíblica</p><p>Sempre em ouro, caixa alta, espaçada. A Palavra tem assinatura própria em cada peça.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- APLICACOES -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Aplicações</p>
+    <h2>Onde a marca vive</h2>
+    <div class="apps">
+      <div class="app"><div class="n">01</div><h3>Capa do Clube</h3><p>O símbolo, o nome e a promessa sobre marfim com halo de luz. A porta de entrada.</p></div>
+      <div class="app"><div class="n">02</div><h3>Capas das 12 semanas</h3><p>Template fixo: número da semana, tema em Cormorant, a linha de montanhas e a referência em ouro.</p></div>
+      <div class="app"><div class="n">03</div><h3>Thumbnails de aula</h3><p>Tema + ícone do selo, consistência total entre as 12 semanas na área de membros.</p></div>
+      <div class="app"><div class="n">04</div><h3>PDF de atividade</h3><p>Cabeçalho com o selo, a oração da semana em destaque e o espaço de aplicação prática.</p></div>
+      <div class="app"><div class="n">05</div><h3>Certificado de conclusão</h3><p>Marfim e ouro, o selo em destaque, o nome da aluna. O marco da transformação.</p></div>
+      <div class="app"><div class="n">06</div><h3>Divulgação no feed</h3><p>Ponte com o brand escuro da Ana: o logo em ouro sobre o fundo abismo, convidando para a luz.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BASE BIBLICA -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">O Fundamento</p>
+    <h2>A identidade tem raiz</h2>
+    <div class="grid2">
+      <div class="card"><p class="tag">O coração do símbolo</p><p class="verse" style="margin:0">"Transformai-vos pela renovação da vossa mente."<b>Romanos 12:2</b></p></div>
+      <div class="card"><p class="tag">As montanhas</p><p class="verse" style="margin:0">"Elevo os meus olhos para os montes. De onde me vem o socorro?"<b>Salmo 121:1</b></p></div>
+      <div class="card"><p class="tag">A sabedoria</p><p class="verse" style="margin:0">"Se algum de vós tem falta de sabedoria, peça-a a Deus."<b>Tiago 1:5</b></p></div>
+      <div class="card"><p class="tag">A oração</p><p class="verse" style="margin:0">"Orai sem cessar."<b>1 Tessalonicenses 5:17</b></p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Brandbook do <b>Clube da Oração</b> &nbsp;·&nbsp; Ana Paula Heinen &nbsp;·&nbsp; Concebido por Kaempf Business &nbsp;·&nbsp; 2026
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clube da Oração · Identidade Visual · Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --marfim:#F4EBD8; --perg:#FBF5E8; --luz:#FFFBF2;
+    --ouro:#B8860B; --ouro-l:#D9B45A; --bronze:#8A6420;
+    --marrom:#3D3122; --marrom-s:#6B5A42; --taupe:#B3A78D;
+    --linha:rgba(184,134,11,0.26);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(700px 520px at 50% -60px, rgba(232,200,119,0.45), transparent 70%),
+      var(--marfim);
+    color:var(--marrom);font-family:'Inter',sans-serif;line-height:1.6;
+    padding:0 0 90px;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 26px;}
+  header{text-align:center;padding:80px 26px 30px;}
+  .kicker{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--bronze);font-weight:600;margin-bottom:18px;}
+  h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(38px,7vw,68px);color:var(--marrom);}
+  .sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(17px,2.5vw,22px);color:var(--marrom-s);margin-top:10px;}
+  .goldrule{width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--ouro),transparent);margin:26px auto 0;}
+  .btnrow{text-align:center;margin:30px 0 10px;}
+  .btn{display:inline-block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--luz);
+    background:var(--ouro);padding:14px 26px;border-radius:6px;text-decoration:none;transition:background .2s;}
+  .btn:hover{background:var(--bronze);}
+  .seclabel{display:flex;align-items:center;gap:16px;justify-content:center;margin:64px 0 26px;}
+  .seclabel::before,.seclabel::after{content:"";height:1px;width:54px;background:var(--linha);}
+  .seclabel span{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--bronze);font-weight:600;}
+  .hero-cover{max-width:520px;margin:0 auto;}
+  .hero-cover img{width:100%;border-radius:10px;box-shadow:0 14px 40px rgba(61,49,34,0.18);display:block;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px;}
+  .card img{width:100%;aspect-ratio:1/1;border-radius:8px;box-shadow:0 8px 24px rgba(61,49,34,0.14);display:block;transition:transform .2s, box-shadow .2s;}
+  .card img:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(61,49,34,0.22);}
+  .card p{font-size:12px;color:var(--marrom-s);letter-spacing:.04em;margin-top:9px;text-align:center;}
+  footer{text-align:center;margin-top:60px;font-size:11px;letter-spacing:.1em;color:var(--taupe);}
+  footer b{color:var(--ouro);}
+</style>
+</head>
+<body>
+<header>
+  <p class="kicker">Identidade Visual · Preview para validação</p>
+  <h1>Clube da Oração</h1>
+  <p class="sub">A Palavra que renova a mente e transforma a vida.</p>
+  <div class="goldrule"></div>
+  <div class="btnrow"><a class="btn" href="brandbook/">Ver o Brandbook completo</a></div>
+</header>
+
+<div class="wrap">
+  <div class="seclabel"><span>Capa do Clube</span></div>
+  <div class="hero-cover"><img src="capas/00-capa-clube.png" alt="Capa Clube da Oração" loading="lazy"></div>
+
+  <div class="seclabel"><span>As 12 Semanas</span></div>
+  <div class="grid">
+    <div class="card"><img src="capas/semana-01-identidade.png" alt="Semana 01 Identidade" loading="lazy"><p>01 · Identidade</p></div>
+    <div class="card"><img src="capas/semana-02-mentalidade.png" alt="Semana 02 Mentalidade" loading="lazy"><p>02 · Mentalidade</p></div>
+    <div class="card"><img src="capas/semana-03-sabedoria.png" alt="Semana 03 Sabedoria" loading="lazy"><p>03 · Sabedoria</p></div>
+    <div class="card"><img src="capas/semana-04-discernimento.png" alt="Semana 04 Discernimento" loading="lazy"><p>04 · Discernimento</p></div>
+    <div class="card"><img src="capas/semana-05-confianca.png" alt="Semana 05 Confiança" loading="lazy"><p>05 · Confiança</p></div>
+    <div class="card"><img src="capas/semana-06-distracao-e-foco.png" alt="Semana 06 Distração e Foco" loading="lazy"><p>06 · Distração e Foco</p></div>
+    <div class="card"><img src="capas/semana-07-proposito.png" alt="Semana 07 Propósito" loading="lazy"><p>07 · Propósito</p></div>
+    <div class="card"><img src="capas/semana-08-fe.png" alt="Semana 08 Fé" loading="lazy"><p>08 · Fé</p></div>
+    <div class="card"><img src="capas/semana-09-perdao.png" alt="Semana 09 Perdão" loading="lazy"><p>09 · Perdão</p></div>
+    <div class="card"><img src="capas/semana-10-ansiedade-e-paz.png" alt="Semana 10 Ansiedade e Paz" loading="lazy"><p>10 · Ansiedade e Paz</p></div>
+    <div class="card"><img src="capas/semana-11-obediencia.png" alt="Semana 11 Obediência" loading="lazy"><p>11 · Obediência</p></div>
+    <div class="card"><img src="capas/semana-12-intimidade-com-deus.png" alt="Semana 12 Intimidade com Deus" loading="lazy"><p>12 · Intimidade com Deus</p></div>
+  </div>
+
+  <footer>
+    Identidade do <b>Clube da Oração</b> &nbsp;·&nbsp; Ana Paula Heinen &nbsp;·&nbsp; Concebido por Kaempf Business &nbsp;·&nbsp; 2026<br>
+    Os temas e versículos das semanas 7 a 12 são sugestão, ajustáveis.
+  </footer>
+</div>
+</body>
+</html>
